@@ -1,4 +1,4 @@
-# 🧠 PID Controller in C
+# PID Controller in C
 
 This project provides a clean, reusable implementation of a **PID controller in C**, designed for embedded systems and simulation. It also includes an educational explanation of how PID control works, how it's implemented, and how to tune it.
 
