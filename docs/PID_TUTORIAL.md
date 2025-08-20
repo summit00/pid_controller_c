@@ -73,18 +73,18 @@ $$
 
 ### Manual Tuning
 
-1. Start with $K_i = 0 $, $ K_d = 0 $
-2. Increase $ K_p $ until the system starts oscillating, then reduce slightly
-3. Add $ K_d $ to reduce overshoot
-4. Add $ K_i $ to eliminate steady-state error
+1. Start with $K_i = 0$, $K_d = 0$
+2. Increase $K_p$ until the system starts oscillating, then reduce slightly
+3. Add $K_d$ to reduce overshoot
+4. Add $K_i$ to eliminate steady-state error
 
 ### Rule-of-Thumb Table
 
 | Gain | Effect | Too Low | Too High |
 |------|--------|---------|----------|
-| $ K_p $ | Speed | Sluggish | Oscillations |
-| $ K_i $ | Accuracy | Steady error | Overshoot |
-| $ K_d $ | Stability | Oscillations | Noise sensitivity |
+| $K_p$ | Speed | Sluggish | Oscillations |
+| $K_i$ | Accuracy | Steady error | Overshoot |
+| $K_d$ | Stability | Oscillations | Noise sensitivity |
 
 ---
 
