@@ -10,10 +10,7 @@ on:
 
 jobs:
   test:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest]
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
@@ -29,13 +26,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Build PID library
+      - name: Build PID library (Linux .so)
         run: |
-          if [ "$RUNNER_OS" == "Windows" ]; then
-            gcc -shared -o simulation/utils/pid.dll -fPIC src/c/pid.c
-          else
-            gcc -shared -fPIC -o simulation/utils/pid.so src/c/pid.c
-          fi
+          gcc -shared -fPIC -o simulation/utils/pid.so src/c/pid.c
 
       - name: Run Tests
         env:

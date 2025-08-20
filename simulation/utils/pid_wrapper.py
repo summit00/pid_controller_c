@@ -1,13 +1,18 @@
 import ctypes
 import os
+import sys
 
-# Load the DLL
-dll_path = os.path.join(os.path.dirname(__file__), "pid.dll")
-print("DLL path:", dll_path)  # Print the resolved path
+# Detect platform and set library name
+if sys.platform == "win32":
+    lib_name = "pid.dll"
+else:
+    lib_name = "pid.so"
+
+dll_path = os.path.join(os.path.dirname(__file__), lib_name)
+print("PID library path:", dll_path)
 
 if not os.path.isfile(dll_path):
-    raise FileNotFoundError(f"Could not find pid.dll at: {dll_path}")
-
+    raise FileNotFoundError(f"Could not find {lib_name} at: {dll_path}")
 
 pid_lib = ctypes.CDLL(dll_path)
 
