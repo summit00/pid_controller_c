@@ -1,32 +1,23 @@
 {
-  "version": "2.0.0",
-  "tasks": [
-    {
-      "label": "build pid sim",
-      "type": "shell",
-      "command": "clang",
-      "args": [
-        "examples/rl_simulation.c",
-        "source/pid.c",
-        "-o",
-        "pid_sim"
-      ],
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      },
-      "problemMatcher": []
-    },
-    {
-      "label": "run pid sim and export CSV",
-      "type": "shell",
-      "command": "./pid_sim > output.csv",
-      "dependsOn": "build pid sim",
-      "group": {
-        "kind": "test",
-        "isDefault": true
-      },
-      "problemMatcher": []
-    }
-  ]
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build PID DLL",
+            "type": "shell",
+            "command": "C:/msys64/ucrt64/bin/gcc.exe",
+            "args": [
+                "-shared",
+                "-O2",
+                "-Wall",
+                "-o",
+                "${workspaceFolder}/simulation/utils/pid.dll",
+                "${workspaceFolder}/source/pid.c"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$gcc"]
+        }
+    ]
 }

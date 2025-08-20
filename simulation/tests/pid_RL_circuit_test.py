@@ -1,0 +1,41 @@
+import sys
+import os
+import pytest
+
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
+
+
+from simulation.utils.pid_wrapper import PyPID
+from simulation.utils.RL_circuit import RLCircuit
+from simulation.utils.magnitudeOptimum import MagnitudeOptimumTuner
+from simulation.utils.simulator import Simulator
+from simulation.utils.simulation_plotter import SimulationPlotter
+
+
+@pytest.mark.parametrize("R, L, setpoint, t_final", [
+    (1.0, 0.05, 0.1, 0.05),
+])
+def test_rl_circuit_magnitude_optimum(R, L, setpoint, t_final):
+    controller_dt = 0.001
+    plant = RLCircuit(R, L)
+    current_tuner = MagnitudeOptimumTuner(plant, controller_dt)
+    Kp_current, Ki_current, Kd_current = current_tuner.tune()
+
+    # Create the C PID controller
+    controller = PyPID(
+        kp=Kp_current,
+        ki=Ki_current,
+        kd=Kd_current,
+        dt=controller_dt
+    )
+
+    controller.set_output_limits(-5.0, 5.0)
+
+    setpoint_func = lambda t: setpoint
+    sim = Simulator(plant, controller, setpoint_func, dt=controller_dt, t_final=t_final)
+    results = sim.run()
+
+    plotter = SimulationPlotter(results)
+    plotter.plot_current_and_voltage()
+
+    assert abs(results["output"][-1] - setpoint) < 0.01  # tolerance can be adjusted
