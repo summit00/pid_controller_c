@@ -28,7 +28,7 @@ Welcome! This project demonstrates how to use a **PID controller written in C** 
 ## How It Works
 
 - **PID Controller:**  
-  Written in C for performance and clarity. The C code is compiled into a shared library (`.dll` for Windows, `.so` for Linux).  
+  Written in C for embedded compatibility. The C code is compiled into a shared library (`.dll` for Windows, `.so` for Linux).  
   The demo uses only the **P** and **I** terms (PI controller).
 
 - **Simulation:**  
@@ -41,7 +41,7 @@ Welcome! This project demonstrates how to use a **PID controller written in C** 
 Below is a typical result from running the demo.  
 The PI controller regulates the current in the RL circuit to reach the setpoint:
 
-![RL Circuit PI Control Demo](image.png)
+![RL Circuit PI Control Demo](docs/image.png)
 
 - **Top:** Current response (orange) tracks the setpoint (blue dashed).
 - **Bottom:** Voltage applied by the controller.
@@ -55,6 +55,10 @@ The PI controller regulates the current in the RL circuit to reach the setpoint:
 3. Run the demo script from `simulation/demo/` to see the simulation and plots:
    ```sh
    python simulation/demo/sim_plot.py
+
+(detailed dll generation explaination follows).
+
+
 ## Learn More
 
 Want to understand **how PID works** and how to tune it?
