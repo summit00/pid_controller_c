@@ -1,16 +1,15 @@
-import sys
-import os
 import pytest
+import sys
+from pathlib import Path
 
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
-
+project_root = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(project_root))
 
 from simulation.utils.pid_wrapper import PyPID
 from simulation.utils.RL_circuit import RLCircuit
 from simulation.utils.magnitudeOptimum import MagnitudeOptimumTuner
 from simulation.utils.simulator import Simulator
 from simulation.utils.simulation_plotter import SimulationPlotter
-
 
 @pytest.mark.parametrize("R, L, setpoint, t_final", [
     (1.0, 0.05, 0.1, 0.05),
