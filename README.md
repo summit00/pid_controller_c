@@ -51,12 +51,16 @@ The PI controller regulates the current in the RL circuit to reach the setpoint:
 ## Getting Started (VS Code)
 
 1. Open the project folder in **Visual Studio Code**.
-2. You do **not** need to compile the C code—the required `.dll` (Windows) is already included.
-3. Run the demo script from `simulation/demo/` to see the simulation and plots:
-   ```sh
-   python simulation/demo/sim_plot.py
+2. Run the demo script to see the simulation and plots.
+3. **Optional**: Rebuild the PID .dll
+ - If you have safety or security concerns, you can delete the existing .dll and generate your own.
+ - If you modify the .c/.h, you must generate the .dll.
 
-(detailed dll generation explaination follows).
+### DLL Generation
+The PID controller is written in C and compiled into a windows DLL (pid.dll) for python to use. The build is definied in **tasks.json**
+
+1. Press ctrl+shift+B (or go to Terminal->RunTask->Build PID Dll)
+2. The DLL will be generated in simulation/utils/pid.dll
 
 
 ## Learn More
