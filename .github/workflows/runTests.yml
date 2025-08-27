@@ -28,6 +28,6 @@ jobs:
 
       - name: Run Tests
         env:
-          PYTHONPATH: ./simulation:.
+          PYTHONPATH: "pid:simulation"
         run: |
-          pytest simulation/tests
+          pytest tests
