@@ -131,11 +131,11 @@ $$
 
 ## 5. How It’s Implemented in This Project
 
-See `source/pid.c` and `pid.h`:
+See `source/pid.c` and `pid.h` or `pid/pid.py`:
 
 - Modular, reusable structure
-- `pid_init()`: sets gains and resets memory
-- `pid_compute()`: computes output based on P, I, D
+- `init()`: sets gains and resets memory
+- `compute()`: computes output based on P, I, D
 - Anti-windup: clamps the integral to output limits
 - Output is clamped between `out_min` and `out_max`
 

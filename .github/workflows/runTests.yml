@@ -26,10 +26,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Build PID library (Linux .so)
-        run: |
-          gcc -shared -fPIC -o simulation/utils/pid.so source/pid.c
-
       - name: Run Tests
         env:
           PYTHONPATH: ./simulation:.

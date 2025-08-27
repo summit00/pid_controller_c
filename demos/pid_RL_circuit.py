@@ -1,15 +1,15 @@
 import sys
 from pathlib import Path
 
-project_root = Path(__file__).resolve().parents[2]
+project_root = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(project_root))
 
 
-from simulation.utils.pid_wrapper import PyPID
-from simulation.utils.RL_circuit import RLCircuit
-from simulation.utils.magnitudeOptimum import MagnitudeOptimumTuner
-from simulation.utils.simulator import Simulator
-from simulation.utils.simulation_plotter import SimulationPlotter
+from pid.pid import PIDController
+from simulation.plants.RL_circuit import RLCircuit
+from simulation.magnitudeOptimum import MagnitudeOptimumTuner
+from simulation.simulator import Simulator
+from simulation.simulation_plotter import SimulationPlotter
 
 
 def run_rl_circuit_magnitude_optimum(R=1.0, L=0.05, setpoint=0.1, t_final=0.05):
@@ -18,8 +18,7 @@ def run_rl_circuit_magnitude_optimum(R=1.0, L=0.05, setpoint=0.1, t_final=0.05):
     current_tuner = MagnitudeOptimumTuner(plant, controller_dt)
     Kp_current, Ki_current, Kd_current = current_tuner.tune()
 
-    # Create the C PID controller
-    controller = PyPID(kp=Kp_current, ki=Ki_current, kd=Kd_current, dt=controller_dt)
+    controller = PIDController(kp=Kp_current, ki=Ki_current, kd=Kd_current, dt=controller_dt)
 
     controller.set_output_limits(-5.0, 5.0)
 
