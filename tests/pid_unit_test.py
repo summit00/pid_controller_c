@@ -5,7 +5,7 @@ from pathlib import Path
 project_root = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(project_root))
 
-from pid.pid import PIDController
+from pid.pidController import PIDController
 
 @pytest.mark.parametrize("kp, ki, kd, dt, setpoint, measurement, expected", [
     (2.0, 0.5, 0.1, 0.1, 10.0, 5.0, 10.0 + 0.25 + 5.0),  # Basic PID case

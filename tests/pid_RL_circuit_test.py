@@ -5,7 +5,7 @@ from pathlib import Path
 project_root = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(project_root))
 
-from pid.pid import PIDController
+from pid.pidController import PIDController
 from simulation.plants.RL_circuit import RLCircuit
 from simulation.magnitudeOptimum import MagnitudeOptimumTuner
 from simulation.simulator import Simulator
