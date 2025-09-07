@@ -31,6 +31,6 @@ class MagnitudeOptimumTuner:
 
         Kp = self.plant.L / 2 / Te
         Ki = 1 / (Te*tau )
-        Kd = 0.005  # Magnitude Optimum typically doesn't use a derivative term
+        Kd = 0.0  # Magnitude Optimum typically doesn't use a derivative term
 
         return Kp, Ki, Kd

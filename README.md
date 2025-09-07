@@ -1,15 +1,15 @@
 # PID Controller with RL Circuit Simulation (C + Python)
 
-Welcome! This project demonstrates how to use a **PID controller written in C** to control an RL (Resistor–Inductor) circuit, with all simulation and visualization handled in **Python**.  
-
-> **Note:** The included demo uses a **PI controller** (derivative gain= 0), which is a simplified version of PID and commonly used in industry.
+Welcome! This project demonstrates how to use a **PID controller** to control an RL (Resistor–Inductor) circuit and a DC-Motor, with all simulation and visualization handled in **Python**.  
 
 ---
 
 ## Folder Structure
 
 - `demos/`  
-  Demonstration of PID working in combination with RL Circuit and DCMotor.
+  Demonstration of PID working in combination with RL Circuit and DC-Motor.
+  - The Rl Circuit is controlled by a PID Controller. Furthermore the Controller is tuned by a technique called Magnitude Optimum.
+  - The Dc-Motor is controlled by a PID Controller. The tuning was done manually by Hand.
 
 - `docs/`  
   Documentation and tutorials, including a detailed PID theory and tuning guide.
@@ -70,10 +70,10 @@ Want to understand **how PID works** and how to tune it?
 
 ---
 
-## License
-
-MIT License
-
 ## Support
 If you like this project, consider supporting me on Ko-fi:
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/summit00)
+
+## License
+
+MIT License
